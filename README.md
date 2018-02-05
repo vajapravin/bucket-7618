@@ -1,6 +1,8 @@
 We work on the Google Cloud Platform (GCP). We run simulations on machines with typically 16 cores or more. Those are expensive!
 Therefore, we start up a dedicated virtual machine for each simulation: we create the machine, upload the necessary files (3D model, json file with simulation parameters) and call the command for the simulation. Once the simulation is finished, transfer the data back to the main server and kill the virtual machine.
 
+[![asciicast](https://asciinema.org/a/161185.png)](https://asciinema.org/a/161185)
+
 The challenge:
 - Create a free account on the GCP (google cloud platform). You should get around 300 dollars’ worth of credits 😊
 - Server VM: make a virtual machine (you can take the smallest one if you like) that will act as the main server. Store a dummy input.json file on the server.
