@@ -14,6 +14,7 @@ class Connect
     server_list
     server_name = @compute.generate_server(user_input)
     server_list
+    server_name
   end
 
   private
@@ -45,4 +46,11 @@ class Connect
 end
 
 connect = Connect.new
-connect.instance_process(false)
+if ARGV.blank?
+  server_name = connect.instance_process(false)
+  `gcloud compute scp --zone us-east1-b ~/airshaper/input/sample.txt #{server_name}:~/sample.txt`
+  `gcloud compute ssh --zone us-east1-b #{server_name} --command 'cat /proc/cpuinfo >> ~/output.txt; lsb_release -a >> ~/output.txt'`
+  `gcloud compute scp --zone us-east1-b #{server_name}:~/output.txt ~/output-#{server_name}.txt`
+else
+  connect.instance_process(false)
+end
