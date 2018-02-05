@@ -2,7 +2,8 @@
 
 source 'https://rubygems.org'
 
-gem 'fog-google', git: 'https://github.com/fog/fog-google.git'
+gem 'fog-google'
 gem 'awesome_print'
 gem 'terminal-table'
+gem 'pry'
 gem 'rails'
