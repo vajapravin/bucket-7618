@@ -6,12 +6,16 @@ class Server
     @connection = connection
   end
 
-  def create disk
-    print "Server name:"
-    server_name = gets.chomp
+  def create disk, server_name=nil, user_name=nil
+    if server_name.nil?
+      print "Server name:"
+      server_name = gets.chomp
+    end
 
-    print "User name:"
-    user_name = gets.chomp
+    if user_name.nil?
+      print "User name:"
+      user_name = gets.chomp
+    end
 
     puts "Creating server..."
 

@@ -7,7 +7,7 @@ class Compute
     @connection = Fog::Compute::Google.new(
       google_project: 'pursueon-191807',
       google_client_email: 'pursueon-191807@appspot.gserviceaccount.com',
-      google_json_key_location: '/Users/pravinvaja/ruby_workspace/airshaper/pursueon-abcb6d92e8db.json'
+      google_json_key_location: '~/airshaper/pursueon-abcb6d92e8db.json'
     )
   end
 
@@ -19,15 +19,23 @@ class Compute
     @servers ||= @connection.servers
   end
 
-  def generate_server
+  def generate_server user_input=true
     disk_class = Disk.new(@connection)
-    disk = disk_class.create
+    if user_input
+      disk = disk_class.create
+    else
+      disk = disk_class.create("airshaper-disk-#{Time.now.to_i}", 10, "us-east1-b")
+    end
 
     server_class = Server.new(@connection)
 
     @disks = nil
     @servers = nil
 
-    server_class.create(disk)
+    if user_input
+      server_class.create(disk)
+    else
+      server_class.create(disk, "airshaper-server-#{Time.now.to_i}", "airshaper")
+    end
   end
 end

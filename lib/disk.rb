@@ -3,15 +3,21 @@ class Disk
     @connection = connection
   end
 
-  def create
-    print "Disk name:"
-    disk_name = gets.chomp
+  def create disk_name=nil, disk_size=nil, disk_zone=nil
+    if disk_name.nil?
+      print "Disk name:"
+      disk_name = gets.chomp
+    end
 
-    print "Disk size in gb:"
-    disk_size = gets.chomp.to_i
+    if disk_size.nil?
+      print "Disk size in gb:"
+      disk_size = gets.chomp.to_i
+    end
 
-    print "Disk zone:"
-    disk_zone = gets.chomp
+    if disk_zone.nil?
+      print "Disk zone:"
+      disk_zone = gets.chomp
+    end
 
     puts "Creating disk..."
 

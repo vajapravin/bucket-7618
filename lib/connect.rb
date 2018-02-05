@@ -10,9 +10,9 @@ class Connect
     @compute = Compute.new
   end
 
-  def instance_process
+  def instance_process user_input=true
     server_list
-    server_name = @compute.generate_server
+    server_name = @compute.generate_server(user_input)
     server_list
   end
 
@@ -45,4 +45,4 @@ class Connect
 end
 
 connect = Connect.new
-connect.instance_process
+connect.instance_process(false)
