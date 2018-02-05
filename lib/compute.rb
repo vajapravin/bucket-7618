@@ -7,7 +7,7 @@ class Compute
     @connection = Fog::Compute::Google.new(
       google_project: 'pursueon-191807',
       google_client_email: 'pursueon-191807@appspot.gserviceaccount.com',
-      google_json_key_location: '~/airshaper/pursueon-abcb6d92e8db.json'
+      google_json_key_location: '~/pursueon-abcb6d92e8db.json'
     )
   end
 
